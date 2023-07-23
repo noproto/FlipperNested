@@ -540,6 +540,12 @@ struct nonce_info nested_attack(
                         break;
                     }
 
+                    // https://github.com/nfc-tools/mfoc/blob/ba072f16f6b2a655d51da2171ecfb83e26c0ef58/src/mfoc.c#L1145
+                    // if (valid_nonce(NtProbe, NtEnc, Ks1, d->parity)) {
+                    // if (valid_nonce(nttest, nt2, ks1, par_array)) {
+                    // revstate = lfsr_recovery32(Ks1, NtProbe ^ t.authuid);
+                    // revstate = lfsr_recovery32(ks1, nttest ^ cuid); (`in` parameter deleted in Mfkey32, restore `in`)
+
                     FURI_LOG_D(TAG, "Nonce#%lu: valid, ntdist=%lu", i + 1, j);
                 }
             }
